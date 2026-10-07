@@ -34,7 +34,7 @@ fn perf_budget_max_workers(budget vperf_core.ResourceBudget) int {
 	if cores <= 0 {
 		return 4
 	}
-	return if cores > 16 { 16 } else { cores }
+	return cores
 }
 
 fn perf_budget_memory_mb(budget vperf_core.ResourceBudget) int {
