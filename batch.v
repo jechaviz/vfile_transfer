@@ -291,9 +291,6 @@ fn normalize_batch_size(value int) int {
 	if value <= 0 {
 		return 500
 	}
-	if value > 10000 {
-		return 10000
-	}
 	return value
 }
 
