@@ -120,13 +120,13 @@ fn (t AdaptiveTuner) summary_note() string {
 
 fn normalize_max_workers(value int) int {
 	if value > 0 {
-		return clamp_int(value, 1, 128)
+		return if value < 1 { 1 } else { value }
 	}
 	cores := vperf_core.logical_cpus()
 	if cores <= 0 {
 		return 4
 	}
-	return clamp_int(cores * 2, 1, 32)
+	return if cores * 2 < 1 { 1 } else { cores * 2 }
 }
 
 fn normalize_limit(value int, fallback int) int {
